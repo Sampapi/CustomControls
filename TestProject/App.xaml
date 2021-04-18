@@ -1,0 +1,29 @@
+﻿    <prism:PrismApplication
+    xmlns:sys="clr-namespace:System;assembly=netstandard" x:Class="TestProject.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:TestProject"
+             xmlns:prism="http://prismlibrary.com/" >
+
+    <Application.Resources>
+
+        <ResourceDictionary>
+            <sys:Double x:Key="DefaultFontSize">18</sys:Double>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/WpfResourceLibrary;component/Styles/Brushes.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WpfResourceLibrary;component/Styles/Button.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WpfResourceLibrary;component/Styles/CheckBox.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WpfResourceLibrary;component/Styles/ComboBox.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WpfResourceLibrary;component/Styles/ValidationErrorTemplates.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WpfResourceLibrary;component/Styles/ControlBaseStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WpfResourceLibrary;component/Styles/DataGrid.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WpfResourceLibrary;component/Styles/DatePicker.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WpfResourceLibrary;component/Styles/Label.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WpfResourceLibrary;component/Styles/TabItem.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WpfResourceLibrary;component/Styles/TextBox.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WpfResourceLibrary;component/Styles/ToolTip.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</prism:PrismApplication>
