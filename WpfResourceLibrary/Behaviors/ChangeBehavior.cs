@@ -56,8 +56,12 @@ namespace WpfResourceLibrary.Behaviors
                     if (binding is not null)
                     {
                         string bindingPath = binding.Path.Path;
-                        BindingOperations.SetBinding(dependencyObject, IsChangedProperty, new Binding(bindingPath + "IsChanged"));
-                        CreateOriginalValueBinding(dependencyObject, bindingPath + "OriginalValue");
+                        var newBinding = new Binding(bindingPath + "IsChanged")
+                        {
+                            RelativeSource = binding.RelativeSource
+                        };
+                        BindingOperations.SetBinding(dependencyObject, IsChangedProperty, newBinding);
+                        CreateOriginalValueBinding(dependencyObject, bindingPath + "OriginalValue", binding.RelativeSource);
                     }
                 }
                 else
@@ -73,14 +77,17 @@ namespace WpfResourceLibrary.Behaviors
             var originalValueBinding = BindingOperations.GetBinding(dependencyObject, OriginalValueProperty) as Binding;
             if (originalValueBinding is not null)
             {
-                CreateOriginalValueBinding(dependencyObject, originalValueBinding.Path.Path);
+                CreateOriginalValueBinding(dependencyObject, originalValueBinding.Path.Path, originalValueBinding.RelativeSource);
             }
         }
 
-        private static void CreateOriginalValueBinding(DependencyObject dependencyObject, string originalValueBindingPath)
+        private static void CreateOriginalValueBinding(DependencyObject dependencyObject, string originalValueBindingPath, RelativeSource relativeSource)
         {
             var newBinding = new Binding(originalValueBindingPath)
-                { Converter = GetOriginalValueConverter(dependencyObject), ConverterParameter = dependencyObject };
+                { Converter = GetOriginalValueConverter(dependencyObject), 
+                  ConverterParameter = dependencyObject,
+                  RelativeSource = relativeSource
+            };
 
             BindingOperations.SetBinding(dependencyObject, OriginalValueProperty, newBinding);
         }
